@@ -1,0 +1,19 @@
+#uses httpyac extension
+
+###
+# will fail due to a missing payload
+POST http://localhost:5175/Service1
+Content-Type: application/xml
+
+###
+# will fail due to a miss
+POST http://localhost:5175/Service1
+Content-Type: application/xml
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:ser="http://some.com/service/">
+    <soap:Header/>
+    <soap:Body>
+        <ser:GetWeatherForecast/>
+    </soap:Body>
+</soap:Envelope>

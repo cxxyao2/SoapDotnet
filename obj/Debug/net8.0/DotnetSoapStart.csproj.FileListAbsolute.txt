@@ -40,3 +40,4 @@ C:\chengcoding\csharp\DotnetSoapStart\obj\Debug\net8.0\refint\DotnetSoapStart.dl
 C:\chengcoding\csharp\DotnetSoapStart\obj\Debug\net8.0\DotnetSoapStart.pdb
 C:\chengcoding\csharp\DotnetSoapStart\obj\Debug\net8.0\DotnetSoapStart.genruntimeconfig.cache
 C:\chengcoding\csharp\DotnetSoapStart\obj\Debug\net8.0\ref\DotnetSoapStart.dll
+C:\chengcoding\csharp\DotnetSoapStart\obj\Debug\net8.0\DotnetSoapStart.sourcelink.json

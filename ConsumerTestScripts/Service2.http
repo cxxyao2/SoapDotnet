@@ -1,0 +1,16 @@
+#uses httpyac extension
+
+
+
+###
+# will fail due to a missing payload
+POST http://localhost:5175/Service2
+Content-Type: application/xml
+<soap:Envelope
+    xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+    xmlns:ser="http://some.com/service/">
+    <soap:Header/>
+    <soap:Body>
+        <ser:GetWeatherForecast/>
+    </soap:Body>
+</soap:Envelope>

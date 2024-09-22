@@ -51,6 +51,40 @@ Here’s an example of a basic SOAP envelope structure:
 
 In essence, the envelope ensures that SOAP messages are standardized and interpretable across different systems in a web services environment.
 
+- xml namespace: avoid name conflict.
+  when a namespace is defined for an element, all child elements with the same prefix are associated with the same namespace
+  <root>
+
+<h:table xmlns:h="http://www.w3.org/TR/htmll4/">
+<h:tr>
+<h:td>Apples</h:td>
+<h:td>Bananas</h:td>
+</h:table>
+
+<f:table xmlns:f="http://www.w3.org/TR/fur">
+<f:tr>
+<f:td>Apples</f:td>
+<f:td>Bananas</f:td>
+</f:table>
+
+</root>
+
+- Namespaces can also be declared in the XML root elements
+- XPath is a major element in the XSLT standard.
+
+XPath can be used to navigate through elements and attributes in an XML document.
+
+```
+Path Expression	Result
+/bookstore/book[1]	Selects the first book element that is the child of the bookstore element
+/bookstore/book[last()]	Selects the last book element that is the child of the bookstore element
+/bookstore/book[last()-1]	Selects the last but one book element that is the child of the bookstore element
+```
+
+```
+<root xmlns:h="http://www.w3.org/TR/html4/" xmlns:f="https://www.w3.com/fur">...</root>
+```
+
 ## Project notes
 
 ### Sep.20. 2024

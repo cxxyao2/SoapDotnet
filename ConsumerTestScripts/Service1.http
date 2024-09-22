@@ -17,3 +17,7 @@ Content-Type: application/xml
         <ser:GetWeatherForecast/>
     </soap:Body>
 </soap:Envelope>
+###
+# Will get the wsdl
+GET http://localhost:5175/Service1?wsdl
+###

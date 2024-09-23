@@ -1,5 +1,17 @@
 # SOAP in .NET
 
+## SOAP
+
+- HTTP
+- XML
+
+## SOAP MESSAGE
+
+- Envelope
+- Body
+- Header
+- Fault
+
 ## vs code extensions:
 
 - httpYAC : REST client
@@ -21,6 +33,8 @@
 - vscode (windows) : ctrl+p = => input bar: shift+ >.net ==> select "generate assets for build"
 
 ## Test tools
+
+- SoapUI
 
 - postman
   ![request-response-in-postman](/Screenshots/request-response.png)

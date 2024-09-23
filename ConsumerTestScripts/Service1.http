@@ -6,7 +6,7 @@ POST http://localhost:5175/Service1
 Content-Type: application/xml
 
 ###
-# will fail due to a miss
+# succeed with valid namespace
 POST http://localhost:5175/Service1
 Content-Type: application/xml
 <soap:Envelope

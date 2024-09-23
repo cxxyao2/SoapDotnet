@@ -1,0 +1,9 @@
+<xs:schema xmlns:tns="http://some.com/service/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+elementFormDefault="qualified" targetNamespace="http://some.com/service/">
+<xs:element name="GetWeatherForecast">
+    <xs:complexType></xs:complexType>
+</xs:element>
+<xs:element name="GetWeatherForecastResponse">
+    <xs:any/>
+</xs:element>
+</xs:schema>

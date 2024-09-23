@@ -39,7 +39,7 @@ public abstract class SOAPControllerBase : ControllerBase
         var controllername = ControllerContext.RouteData.Values["controller"]?.ToString();
         if (wsdl is not null)
         {
-            return ProcessWsdlFile($"~/wsdl/{(controllername is null ? "" : controllername + "/")}{(wsdl == string.Empty ? "" : wsdl)}");
+            return ProcessWsdlFile($"~/wsdl/{(controllername is null ? "" : controllername + "/")}{(wsdl == string.Empty ? "wsdl" : wsdl) + ".xml"}");
         }
         if (xsd is not null)
         {
@@ -59,7 +59,7 @@ public abstract class SOAPControllerBase : ControllerBase
     {
         var _baseURL = $"{Request.Scheme}://{Request.Host}{Request.Path}";
         // Convert virtual path to physical
-        if (path.StartsWith("~"))
+        if (path.StartsWith('~'))
         {
             path = path.Replace("~", _env.ContentRootPath);
         }

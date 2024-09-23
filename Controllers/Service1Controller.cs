@@ -21,6 +21,13 @@ namespace DotnetSoapStart.Controllers
             _logger = logger;
         }
 
+        public override SOAPResponseEnvelope CreateSOAPResponseEnvelope()
+        {
+            var env = base.CreateSOAPResponseEnvelope();
+            env.ns.Add(SOAPResponseBody.DefaultNamespacePrefix, SOAPResponseBody.DefaultNamespace);
+            return env;
+        }
+
         [HttpPost]
         public IActionResult Post(SOAP1_1RequestEnvelope env)
         {

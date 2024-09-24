@@ -2,6 +2,7 @@ using System.Text;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using SOAP.Model;
+using static SOAP.Model.SOAPFault;
 namespace SOAP.Controllers;
 
 [ApiController]
@@ -45,14 +46,14 @@ public abstract class SOAPControllerBase : ControllerBase
         {
             if (xsd == string.Empty)
             {
-                return BadRequest("xsd parameter cannot be empty");
+                return SOAPFault("xsd parameter cannot be empty");
             }
             else
             {
                 return ProcessWsdlFile($"~/wsdl/{(controllername is null ? "" : controllername + "/")}{xsd}.xml");
             }
         }
-        return BadRequest("invalid request");
+        return SOAPFault("invalid request");
     }
 
     protected ActionResult ProcessWsdlFile(string path)
@@ -71,11 +72,11 @@ public abstract class SOAPControllerBase : ControllerBase
         catch (DirectoryNotFoundException)
         {
             // TODO should be a SOAPFault
-            return new ObjectResult("wsdl directory not found") { StatusCode = StatusCodes.Status500InternalServerError };
+            return SOAPFault("wsdl directory not found");
         }
         catch (FileNotFoundException)
         {
-            return new ObjectResult("wsdl file not found") { StatusCode = StatusCodes.Status500InternalServerError };
+            return SOAPFault("wsdl file not found");
         }
         // Replace placeholder with actual values
         content = content.Replace("{SERVICEURL}", _baseURL);
@@ -84,4 +85,38 @@ public abstract class SOAPControllerBase : ControllerBase
 
     }
     #endregion
+
+    #region  Faults
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [NonAction]
+    public ObjectResult SOAPFault(string faultstring, SOAPFaultDetail? detail = null, PartyAtFault faultcode = PartyAtFault.Server, Uri? node = null, Uri? role = null)
+    {
+        if (SOAPVersion == SOAPVersion.v1_1)
+        {
+            return SOAPEnvelopeResponse.SOAPFault((SOAP1_1ResponseEnvelope)CreateSOAPResponseEnvelope(), faultstring, detail, faultcode);
+        }
+        else
+        {
+            return SOAPEnvelopeResponse.SOAPFault((SOAP1_2ResponseEnvelope)CreateSOAPResponseEnvelope(), new Reason(faultstring), node, role, detail, faultcode);
+        }
+    }
+
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [NonAction]
+
+    public ObjectResult SOAPFault(Reason reason, SOAPFaultDetail? detail = null, PartyAtFault faultcode = PartyAtFault.Server, Uri? node = null, Uri? role = null)
+    {
+        if (SOAPVersion == SOAPVersion.v1_1)
+        {
+            return SOAPEnvelopeResponse.SOAPFault((SOAP1_1ResponseEnvelope)CreateSOAPResponseEnvelope(), reason.Texts[0].value, detail, faultcode);
+        }
+        else
+        {
+            return SOAPEnvelopeResponse.SOAPFault((SOAP1_2ResponseEnvelope)CreateSOAPResponseEnvelope(), reason, node, role, detail, faultcode);
+        }
+    }
+
+
+    #endregion
+
 }

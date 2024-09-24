@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DotnetSoapStart")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27c617b96fb193c3e580d51348f851f039d5fc75")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba1d723292dbd6f18744930d340637103d314048")]
 [assembly: System.Reflection.AssemblyProductAttribute("DotnetSoapStart")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DotnetSoapStart")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

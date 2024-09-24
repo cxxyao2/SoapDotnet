@@ -15,6 +15,7 @@
 ## vs code extensions:
 
 - httpYAC : REST client
+- XML Tools: XML Formatting, XQuery, XPath Tools etc.
 
 ## vs code setting
 
